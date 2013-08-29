@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.view.View;
 
@@ -23,6 +25,16 @@ public class MainActivity extends Activity {
         // Start our intent service
         Intent intent = new Intent(this, ContactsManagerIntentService.class);
         startService(intent);
+
+        final WebView webView = (WebView) findViewById(R.id.webView);
+        webView.setWebViewClient(new WebViewClient());
+        webView.setInitialScale(1);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webView.setScrollbarFadingEnabled(false);
+        webView.loadUrl("https://github.com/scforandroid");
     }
 
     @Override
